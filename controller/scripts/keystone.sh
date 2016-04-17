@@ -13,9 +13,9 @@ admin_token= openssl rand -hex 10
 #Pre Reqs for Keystone
 ##################
 
-#mysql --user="root" --password="$mysql_password" --e "CREATE DATABASE keystone;"
-#mysql --user="root" --password="$mysql_password" --e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY '$keystone_password';"
-#mysql --user="root" --password="$mysql_password" --e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'$controller_ip' IDENTIFIED BY '$keystone_password';"
+mysql --user="root" --password="$mysql_password" --e "CREATE DATABASE keystone;"
+mysql --user="root" --password="$mysql_password" --e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY '$keystone_password';"
+mysql --user="root" --password="$mysql_password" --e "GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'$controller_ip' IDENTIFIED BY '$keystone_password';"
 
 
 ##################
@@ -48,7 +48,7 @@ driver = keystone.token.persistence.backends.memcache.Token
 driver = keystone.contrib.revoke.backends.sql.Revoke
  " >> $keystone_config
 
-#/bin/sh -c "keystone-manage db_sync" keystone
+/bin/sh -c "keystone-manage db_sync" keystone
 
 ##################
 #Install and Configure Apache
