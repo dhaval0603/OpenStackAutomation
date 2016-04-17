@@ -1,4 +1,4 @@
-
+#!/bin/bash
 ##################
 #Root check
 ##################
@@ -14,3 +14,4 @@ then
 fi
 
 sh scripts/environment.sh
+sh scripts/keystone.sh
