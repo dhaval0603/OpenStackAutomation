@@ -56,9 +56,9 @@ driver = keystone.contrib.revoke.backends.sql.Revoke
 #Install and Configure Apache
 ##################
 apache_config='/etc/apache2/apache2.conf'
-if [ cat $apache_config |grep 'ServerName' |wc -l = "1" ]
+if [ "cat $apache_config |grep 'ServerName' |wc -l" != "0" ];
 then
-    sed -i 's/ServerName/#ServerName/g' $apache_config
+    sed -i '/ServerName/s/^/#/' $apache_config
 fi
 
 echo "ServerName controller" >> $apache_config
@@ -158,5 +158,4 @@ export OS_PASSWORD=$keystone_user_password
 export OS_AUTH_URL=http://controller:5000/v3" > /etc/keystone/demp-openrc.sh
 
 source /etc/keystone/admin-openrc.sh
-openstack token issue
-
+#openstack token issue

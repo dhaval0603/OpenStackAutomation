@@ -13,6 +13,6 @@ then
     exit 0
 fi
 
-sh scripts/environment.sh
-sh scripts/keystone.sh
+./scripts/environment.sh
+./scripts/keystone.sh
 
