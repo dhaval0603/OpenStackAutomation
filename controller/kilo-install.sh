@@ -13,4 +13,4 @@ then
     exit 0
 fi
 
-sh scripts/requirements.sh
+sh scripts/environment.sh

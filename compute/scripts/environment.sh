@@ -3,7 +3,7 @@
 #Read Config file
 ##################
 
-config_file='../config/compute.conf'
+config_file='config/compute.conf'
 controller_ip=$(grep -Po 'controller_ip=\K[^ ]+' $config_file)
 compute_ip=$(grep -Po 'compute_ip=\K[^ ]+' $config_file)
 

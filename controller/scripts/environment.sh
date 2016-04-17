@@ -3,7 +3,7 @@
 #Read Config file
 ##################
 
-config_file='../config/controller.conf'
+config_file='config/controller.conf'
 controller_ip=$(grep -Po 'controller_ip=\K[^ ]+' $config_file)
 compute_ip=$(grep -Po 'compute_ip=\K[^ ]+' $config_file)
 mysql_password=$(grep -Po 'mysql_password=\K[^ ]+' $config_file)
