@@ -147,6 +147,10 @@ export OS_PROJECT_NAME=admin
 export OS_TENANT_NAME=admin
 export OS_USERNAME=admin
 export OS_PASSWORD=$keystone_admin_password
+export OS_URL='http://controller:35357/v2.0'
+export OS_TOKEN=$admin_token
+export OS_IMAGE_API_VERSION=2
+export OS_VOLUME_API_VERSION=2
 export OS_AUTH_URL=http://controller:35357/v3" > /etc/keystone/admin-openrc.sh
 
 echo "export OS_PROJECT_DOMAIN_ID=default
@@ -155,7 +159,11 @@ export OS_PROJECT_NAME=demo
 export OS_TENANT_NAME=demo
 export OS_USERNAME=demo
 export OS_PASSWORD=$keystone_user_password
-export OS_AUTH_URL=http://controller:5000/v3" > /etc/keystone/demp-openrc.sh
+export OS_URL='http://controller:35357/v2.0'
+export OS_TOKEN=$admin_token
+export OS_IMAGE_API_VERSION=2
+export OS_VOLUME_API_VERSION=2
+export OS_AUTH_URL=http://controller:5000/v3" > /etc/keystone/demo-openrc.sh
 
 source /etc/keystone/admin-openrc.sh
 #openstack token issue
