@@ -62,13 +62,13 @@ apt-get install mariadb-server python-mysqldb -y
 
 mysql_conf='/etc/mysql/conf.d/mysqld_openstack.cnf'
 touch $mysql_conf
-echo "[mysqld] " > $mysql_conf
-echo "bind-address = $controller_ip" >> $mysql_conf
-echo "default-storage-engine = innodb" >> $mysql_conf
-echo "innodb_file_per_table" >> $mysql_conf
-echo "collation-server = utf8_general_ci" >> $mysql_conf
-echo "init-connect = 'SET NAMES utf8'" >> $mysql_conf
-echo "character-set-server = utf8" >> $mysql_conf
+echo "[mysqld] 
+bind-address = $controller_ip
+default-storage-engine = innodb
+innodb_file_per_table
+collation-server = utf8_general_ci
+init-connect = 'SET NAMES utf8'
+character-set-server = utf8" > $mysql_conf
 
 service mysql restart
 
@@ -85,5 +85,3 @@ mysql --user="root" --password="$mysql_password" --e "FLUSH PRIVILEGES;"
 apt-get install rabbitmq-server -y
 rabbitmqctl add_user openstack $rabbit_password
 rabbitmqctl set_permissions openstack ".*" ".*" ".*"
-
-
