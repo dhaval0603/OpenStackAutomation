@@ -32,7 +32,13 @@ fi
 apt-get update
 apt-get install ntp -y
 
-#XXXXXXXXXXXXXXXXXXXXXXXXXXXEdit NTP conf fileXXXXXXXXXXXXXXXX
+cp /etc/ntp.conf /etc/ntp.conf.bak
+sed -i 's/server 0.ubuntu.pool.ntp.org/server controller iburst/g' /etc/ntp.conf
+sed -i '/server 1.ubuntu.pool.ntp.org/d' /etc/ntp.conf
+sed -i '/server 2.ubuntu.pool.ntp.org/d' /etc/ntp.conf
+sed -i '/server 3.ubuntu.pool.ntp.org/d' /etc/ntp.conf
+rm /var/lib/ntp/ntp.conf
+
 
 service ntp restart
 
