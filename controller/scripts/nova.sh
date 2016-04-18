@@ -7,6 +7,7 @@ controller_ip=$(grep -Po 'controller_ip=\K[^ ]+' $config_file)
 compute_ip=$(grep -Po 'compute_ip=\K[^ ]+' $config_file)
 mysql_password=$(grep -Po 'mysql_password=\K[^ ]+' $config_file)
 nova_password=$(grep -Po 'nova_password=\K[^ ]+' $config_file)
+rabbit_password=$(grep -Po 'rabbit_password=\K[^ ]+' $config_file)
 
 ##################
 #Pre Reqs for Nova
@@ -74,7 +75,7 @@ username = nova
 password = $nova_password " > $nova_config
 
 
-/bin/sh -c "nova-manage db_sync" nova
+/bin/sh -c "nova-manage db sync" nova
 
 service nova-api restart
 service nova-cert restart
