@@ -28,7 +28,7 @@ openstack endpoint create --publicurl http://controller:8774/v2/%\(tenant_id\)s 
 ##################
 # Nova : Install and configure
 ##################
-apt-get install nova-api nova-cert nova-conductor nova-consoleauth nova-novncproxy nova-scheduler python-novaclient
+apt-get install nova-api nova-cert nova-conductor nova-consoleauth nova-novncproxy nova-scheduler python-novaclient -y
 
 #Glance API config
 nova_config='/etc/nova/nova.conf'
@@ -57,6 +57,8 @@ enabled_apis=ec2,osapi_compute,metadata
 my_ip = $controller_ip
 vncserver_listen = $controller_ip
 vncserver_proxyclient_address = $controller_ip
+network_api_class = nova.network.api.API
+security_group_api = nova
 
 [glance]
 host = controller
