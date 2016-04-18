@@ -56,7 +56,7 @@ driver = keystone.contrib.revoke.backends.sql.Revoke
 #Install and Configure Apache
 ##################
 apache_config='/etc/apache2/apache2.conf'
-if [ "cat $apache_config |grep 'ServerName' |wc -l" != "0" ];
+if [ `cat $apache_config |grep 'ServerName' |wc -l` != "0" ];
 then
     sed -i '/ServerName/s/^/#/' $apache_config
 fi

@@ -13,4 +13,5 @@ then
     exit 0
 fi
 
-sh scripts/environment.sh
+./scripts/environment.sh
+./scripts/nova.sh
