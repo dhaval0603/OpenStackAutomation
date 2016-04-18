@@ -16,4 +16,5 @@ fi
 ./scripts/environment.sh
 ./scripts/keystone.sh
 ./scripts/glance.sh
+./scripts/nova.sh
 
