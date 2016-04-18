@@ -8,6 +8,7 @@ compute_ip=$(grep -Po 'compute_ip=\K[^ ]+' $config_file)
 mysql_password=$(grep -Po 'mysql_password=\K[^ ]+' $config_file)
 nova_password=$(grep -Po 'nova_password=\K[^ ]+' $config_file)
 rabbit_password=$(grep -Po 'rabbit_password=\K[^ ]+' $config_file)
+network_cidr=$(grep -Po 'network_cidr=\K[^ ]+' $config_file)
 
 ##################
 #Pre Reqs for Nova
@@ -87,3 +88,13 @@ service nova-conductor restart
 service nova-novncproxy restart
 
 rm -f /var/lib/nova/nova.sqlite
+
+
+##################
+#Initial Network Creation
+##################
+
+source /etc/keystone/admin-openrc.sh
+
+nova network-create demo-net --bridge br100 --multi-host T --fixed-range-v4 $network_cidr
+nova net-list
