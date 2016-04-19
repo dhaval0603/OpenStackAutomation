@@ -9,6 +9,7 @@ compute_ip=$(grep -Po 'compute_ip=\K[^ ]+' $config_file)
 nova_password=$(grep -Po 'nova_password=\K[^ ]+' $config_file)
 local_interface_name=$(grep -Po 'local_interface_name=\K[^ ]+' $config_file)
 public_interface_name=$(grep -Po 'public_interface_name=\K[^ ]+' $config_file)
+rabbit_pass=$(grep -Po 'rabbit_password=\K[^ ]+' $config_file)
 
 ##################
 #Nova : Install
@@ -24,7 +25,7 @@ echo "[DEFAULT]
 rpc_backend = rabbit
 rabbit_host = controller
 rabbit_userid = openstack
-rabbit_password = RABBIT_PASS
+rabbit_password = $rabbit_pass
 auth_strategy = keystone
 my_ip = $compute_ip
 vnc_enabled = True
