@@ -17,4 +17,4 @@ fi
 ./scripts/keystone.sh
 ./scripts/glance.sh
 ./scripts/nova.sh
-
+./scripts/horizon.sh
